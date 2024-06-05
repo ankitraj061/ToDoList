@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            margin: 0 auto;
+            border-radius: 5px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px #ccc;
+
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            font-size: large;
+
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .btn {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .list {
+            width: 500px;
+            margin: 0 auto;
+            border-radius: 5px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px #ccc;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            gap: 20px;
+            
+
+            
+        }
+
+        .inner-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+        }
+
+        .inner-list li {
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            box-shadow: 0 0 10px #ccc;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+
+        }
+
+        .inner-list button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 20%;
+            height: 100%;
+        
+        }
+
+
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="to-do">To Do List</label>
+        <input type="text">
+        <button type="submit" class="btn">Add</button>
+    </form>
+    <div class="list">
+        
+        
+    </div>
+    <script>
+        const form = document.querySelector('form');
+        const div = document.querySelector('.list');
+
+
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const input = document.querySelector('input');
+            const li = document.createElement('li');
+            const button = document.createElement('button');
+            const list =document.createElement('ul');
+            list.classList.add('inner-list');
+
+          
+            li.textContent = input.value.trim();
+            if(li.textContent === '') return;
+            div.appendChild(list);
+
+
+            button.textContent = 'Delete';
+            button.addEventListener('click', () => {
+                div.removeChild(list);
+                div.removeChild(li);
+                div.removeChild(button);
+                
+
+            });
+            li.appendChild(button);
+           
+            list.appendChild(li);
+            list.appendChild(button);
+            input.value = '';
+        });
+
+
+    </script>
+</body>
+</html>
