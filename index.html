@@ -153,7 +153,8 @@
             const list = document.createElement('ul');
             list.classList.add('inner-list');
             const gif = document.querySelector('.gif');
-
+            li.textContent = input.value.trim();
+            if (li.textContent === '') {alert('Please enter a task'); return;}
           
 
             gif.src='./cry-sad.gif';
@@ -162,8 +163,7 @@
             setTimeout(()=>{
                     gif.src='./bhai-kya-kar-raha-hai-tu-ashneer-grover.gif';
                 },5000)
-            li.textContent = input.value.trim();
-            if (li.textContent === '') {alert('Please enter a task'); return;}
+           
             div.appendChild(list);
 
             button.textContent = 'Delete';
