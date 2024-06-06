@@ -143,12 +143,10 @@
     <script>
         const form = document.querySelector('form');
         const div = document.querySelector('.list');
-        var count=0;
         
         form.addEventListener('submit', (event) => {
             event.preventDefault();
-            // const taskImage=document.getElementById('img');
-            // taskImage.setAttribute('src', './cry-sad.gif');
+            
             const input = document.querySelector('input');
             const li = document.createElement('li');
             const button = document.createElement('button');
@@ -161,12 +159,9 @@
             gif.src='./cry-sad.gif';
             const cry=new Audio('./beancries.wav');
             cry.play(); 
-           
-
-           
-            count++;
-            
-
+            setTimeout(()=>{
+                    gif.src='./bhai-kya-kar-raha-hai-tu-ashneer-grover.gif';
+                },5000)
             li.textContent = input.value.trim();
             if (li.textContent === '') {alert('Please enter a task'); return;}
             div.appendChild(list);
