@@ -12,7 +12,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #f8f9fa;
+            background-image: url(./background.jpg);
+            background-size: cover;
+            color: #e0e0e0;
         }
 
         form {
@@ -24,9 +26,9 @@
             margin: 0 auto;
             border-radius: 5px;
             padding: 20px;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px #ccc;
-
+            border: 1px solid #444;
+            box-shadow: 0 0 10px #444;
+            background-color: #1e1e1e;
         }
 
         label {
@@ -34,15 +36,16 @@
             margin-bottom: 10px;
             display: block;
             font-size: large;
-
         }
 
         input {
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #444;
             margin-bottom: 20px;
             width: 100%;
+            background-color: #2e2e2e;
+            color: #e0e0e0;
         }
 
         .btn {
@@ -52,7 +55,19 @@
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
-            width: 100%;
+            width: 30%;
+            height: 100%;
+            transition: all 0.3s ease;
+            font-size: large;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: #0069d9;
+            box-shadow: 0 0 10px #444;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+
         }
 
         .list {
@@ -60,17 +75,15 @@
             margin: 0 auto;
             border-radius: 5px;
             padding: 20px;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px #ccc;
+            border: 1px solid #444;
+            box-shadow: 0 0 10px #444;
             margin-top: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            
             gap: 20px;
-            
+            background-color: #1e1e1e;
 
-            
         }
 
         .inner-list {
@@ -82,22 +95,21 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-
         }
 
         .inner-list li {
             margin-right: 10px;
             padding: 10px;
             border-radius: 5px;
-            background-color: #f8f9fa;
-            box-shadow: 0 0 10px #ccc;
+            background-color: #2e2e2e;
+            box-shadow: 0 0 10px #444;
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
             gap: 20px;
             width: 100%;
-
+            color: #e0e0e0;
         }
 
         .inner-list button {
@@ -109,10 +121,12 @@
             cursor: pointer;
             width: 20%;
             height: 100%;
-        
         }
-
-
+        .gif {
+            width: 100%;
+            height: 300px;
+            border-radius: 5px
+        }
     </style>
 </head>
 <body>
@@ -122,45 +136,59 @@
         <button type="submit" class="btn">Add</button>
     </form>
     <div class="list">
-        
+        <img src="./bhai-kya-kar-raha-hai-tu-ashneer-grover.gif" id="img" alt="gif" class="gif">
+       
         
     </div>
     <script>
         const form = document.querySelector('form');
         const div = document.querySelector('.list');
-
-
-
+        var count=0;
+        
         form.addEventListener('submit', (event) => {
             event.preventDefault();
+            // const taskImage=document.getElementById('img');
+            // taskImage.setAttribute('src', './cry-sad.gif');
             const input = document.querySelector('input');
             const li = document.createElement('li');
             const button = document.createElement('button');
-            const list =document.createElement('ul');
+            const list = document.createElement('ul');
             list.classList.add('inner-list');
+            const gif = document.querySelector('.gif');
 
           
-            li.textContent = input.value.trim();
-            if(li.textContent === '') return;
-            div.appendChild(list);
 
+            gif.src='./cry-sad.gif';
+            const cry=new Audio('./beancries.wav');
+            cry.play(); 
+           
+
+           
+            count++;
+            
+
+            li.textContent = input.value.trim();
+            if (li.textContent === '') {alert('Please enter a task'); return;}
+            div.appendChild(list);
 
             button.textContent = 'Delete';
             button.addEventListener('click', () => {
+              
+                list.removeChild(li);
+                list.removeChild(button);
                 div.removeChild(list);
-                div.removeChild(li);
-                div.removeChild(button);
+                count--;
+                gif.src='./delete.gif';
+                new Audio('./beanlaughs.wav').play()
                 
 
+               
             });
-            li.appendChild(button);
-           
+            
             list.appendChild(li);
             list.appendChild(button);
             input.value = '';
         });
-
-
     </script>
 </body>
 </html>
