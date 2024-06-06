@@ -143,10 +143,12 @@
     <script>
         const form = document.querySelector('form');
         const div = document.querySelector('.list');
+        var count=0;
         
         form.addEventListener('submit', (event) => {
             event.preventDefault();
-            
+            // const taskImage=document.getElementById('img');
+            // taskImage.setAttribute('src', './cry-sad.gif');
             const input = document.querySelector('input');
             const li = document.createElement('li');
             const button = document.createElement('button');
@@ -164,6 +166,12 @@
                     gif.src='./bhai-kya-kar-raha-hai-tu-ashneer-grover.gif';
                 },5000)
            
+
+           
+            count++;
+            
+
+           
             div.appendChild(list);
 
             button.textContent = 'Delete';
@@ -178,6 +186,7 @@
                 setTimeout(()=>{
                     gif.src='./bhai-kya-kar-raha-hai-tu-ashneer-grover.gif';
                 },5000)
+                
 
                
             });
